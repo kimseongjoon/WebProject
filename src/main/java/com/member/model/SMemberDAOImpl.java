@@ -82,24 +82,31 @@ public class SMemberDAOImpl implements SMemberDAO{
     }
 
     @Override
-    public int memberLoginCheck(String userid, String pwd) {
+    public SMemberDTO memberLoginCheck(String userid, String pwd) {
         Connection con = null;
         Statement st = null;
         ResultSet rs = null;
-        int flag = -1;
+//        int flag = -1;
+        SMemberDTO member = SMemberDTO.builder().admin(-1).build();
 
         try {
             con = getConnection();
-            String sql = "SELECT PWD, ADMIN FROM MEMBER WHERE USERID='" + userid + "'";
+            String sql = "SELECT * FROM MEMBER WHERE USERID='" + userid + "'";
 
             st = con.createStatement();
             rs = st.executeQuery(sql);
 
             if (rs.next()) {
                 if (rs.getString("PWD").equals(pwd)) {
-                    flag = rs.getInt("ADMIN");
+                    member = SMemberDTO.builder()
+                    .admin(rs.getInt("ADMIN"))
+                    .name(rs.getString("NAME"))
+                    .userid(rs.getString("USERID"))
+                    .phone(rs.getString("PHONE"))
+                    .email(rs.getString("EMAIL")).build();
+
                 } else {
-                    flag = 2;
+                    member = SMemberDTO.builder().admin(2).build();
                 }
             }
         } catch (NamingException e) {
@@ -110,7 +117,7 @@ public class SMemberDAOImpl implements SMemberDAO{
             closeConnection(con, null, st, rs);
         }
 
-        return flag;
+        return member;
     }
 
     private void closeConnection(Connection con, PreparedStatement ps, Statement st, ResultSet rs) {

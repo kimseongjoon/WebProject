@@ -27,5 +27,5 @@ public interface SMemberDAO {
     String memberIdCheck(String userid);
 
     // 로그인 확인
-    int memberLoginCheck(String userid, String pwd);
+    SMemberDTO memberLoginCheck(String userid, String pwd);
 }

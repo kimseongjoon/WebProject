@@ -17,8 +17,9 @@ public class JoinAction extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("join.jsp");
-        rd.forward(req, resp);
+//        RequestDispatcher rd = req.getRequestDispatcher("join.jsp");
+//        rd.forward(req, resp);
+        doPost(req, resp);
     }
 
     @Override

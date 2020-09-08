@@ -2,6 +2,7 @@ package com.member.action;
 
 import com.member.model.SMemberDAO;
 import com.member.model.SMemberDAOImpl;
+import com.member.model.SMemberDTO;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -29,10 +31,11 @@ public class LoginAction extends HttpServlet {
 
         SMemberDAO dao = SMemberDAOImpl.getInstance();
 
-        int flag = dao.memberLoginCheck(userid, pwd);
+        SMemberDTO member = dao.memberLoginCheck(userid, pwd);
+        int flag = member.getAdmin();
         if (flag == 0 || flag == 1) {
-//            resp.
-//            session.setAttribute("userid", userid);
+            HttpSession session = req.getSession();
+            session.setAttribute("user", member);
         }
 
         resp.setContentType("text/html;charset=utf-8");
