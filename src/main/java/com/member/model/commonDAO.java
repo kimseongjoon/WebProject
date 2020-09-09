@@ -1,4 +1,4 @@
-package com.member.action;
+package com.member.model;
 
 import com.member.model.commonDTO;
 

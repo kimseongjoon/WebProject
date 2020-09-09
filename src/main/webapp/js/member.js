@@ -44,4 +44,37 @@ $(function () {
 
         $("#frm").submit();
     });
+
+    $("#idCheckBtn").click(function () {
+        window.open("idcheck", "", "width=500 height=300");
+    })
+    function del(userid, adminStr) {
+        if (adminStr == "관리자") {
+            alert("관리자는 삭제할 수 없습니다.");
+        }
+    }
+
+    $("#userBtn").click(function () {
+        $.ajax({
+            type:"post",
+            url:"idcheck",
+            data:{"id":$("#id").val()},
+            success:function (d) {
+                alert();
+                answer = d.trim();
+                if (answer == "yes") {
+                    alert("사용 가능한 아이디입니다.");
+
+                    var id = $("#id").val();
+                    $(opener.document).find("#userid").val(id);
+                    self.close();
+                } else {
+                    alert("사용 불가능한 아이디입니다.");
+                }
+            },
+            error:function (e) {
+                alert("에러:" + e);
+            }
+        })
+    })
 })

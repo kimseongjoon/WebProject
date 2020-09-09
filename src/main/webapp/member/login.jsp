@@ -24,12 +24,11 @@
                     // alert(data);
                     var d = data.trim();
                     if (d == 0) {
-
                         alert("일반회원 로그인");
-                        // $(location).attr("href", "");
+                        $(location).attr("href", "view");
                     } else if (d == 1) {
                         alert("관리자 로그인");
-                        $(location).attr("href", "")
+                        $(location).attr("href", "list");
                     } else if (d == 2) {
                         alert("비밀번호를 확인하세요");
                     } else if (d == -1) {
@@ -66,6 +65,9 @@
                             <label class="custom-control-label" for="customCheck1">Remember password</label>
                         </div>
                         <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" id="loginBtn">Login</button>
+<%--                        버튼 차이 확인 필요--%>
+
+
 <%--                        <hr class="my-4">--%>
 <%--                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>--%>
 <%--                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>--%>
