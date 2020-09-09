@@ -27,6 +27,7 @@ public class IdCheckAction extends HttpServlet {
 
         SMemberDAO dao = SMemberDAOImpl.getInstance();
 
+        resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();
         out.print(dao.memberIdCheck(id));
     }

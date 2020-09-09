@@ -14,42 +14,45 @@
                     </p>
                     <form class="form-signin" action="join" method="post" id="frm">
                         <div class="form-label-group">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" onchange="x(this)" required autofocus>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Your name" onchange="checkLength(this)" required autofocus>
                             <label for="name">Name(*)</label>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="text" id="userid" name="userid" class="form-control" placeholder="ID" onchange="bgcolor_yellow(this)" required>
+                            <input type="text" id="userid" name="userid" class="form-control" placeholder="ID" onchange="checkId(this)" required>
                             <label for="userid">ID(*)</label>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback"></div>
                         </div>
-                        <button type="button" id="idCheckBtn">중복확인</button>
 
                         <div class="form-label-group">
-                            <input 
-                                    type="password"
-                                    id="pwd"
-                                    name="pwd"
-                                    class="form-control"
-                                    placeholder="Password"
-                                    onchange=""
-                                    required
-                            >
+                            <input type="password" id="pwd" name="pwd" class="form-control" placeholder="Password" onchange="checkLength(this)" required>
                             <label for="pwd">Password(*)</label>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback"></div>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="password" id="pwd_check" name="pwd_check" class="form-control" placeholder="Re-enter Password" required>
+                            <input type="password" id="pwd_check" name="pwd_check" class="form-control" placeholder="Re-enter Password"  onchange="checkPwd(this)" required>
                             <label for="pwd_check">Re-enter Password(*)</label>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback"></div>
                         </div>
 
                         <div class="form-label-group">
                             <input type="email" id="email" name="email" class="form-control" placeholder="Email address">
                             <label for="email">Email address</label>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback"></div>
                         </div>
 
                         <div class="form-label-group">
                             <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone number">
                             <label for="phone">Phone number</label>
+                            <div class="valid-feedback"></div>
+                            <div class="invalid-feedback"></div>
                         </div>
 
                         <div class="custom-control custom-checkbox mb-3">
@@ -66,21 +69,6 @@
         </div>
     </div>
 </div>
-<script>
-    function x(obj) {
-        if (obj.val().length < 2){
-            obj.addClass('is-invalid');
-        }
-        else {
-            obj.addClass('is-valid');
-        }
-    }
-
-    function bgcolor_yellow(obj) {
-        obj.style.backgroundColor ='yellow';
-    }
-
-</script>
 
 <%@ include file="/include/footer.jsp"%>
 

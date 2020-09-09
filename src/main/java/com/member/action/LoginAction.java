@@ -3,6 +3,7 @@ package com.member.action;
 import com.member.model.SMemberDAO;
 import com.member.model.SMemberDAOImpl;
 import com.member.model.SMemberDTO;
+import com.member.util.SHA256;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,9 +29,10 @@ public class LoginAction extends HttpServlet {
         String userid = req.getParameter("userid");
         String pwd = req.getParameter("pwd");
 
-        SMemberDAO dao = SMemberDAOImpl.getInstance();
+        String encPwd = SHA256.getEncrypt(pwd, userid);
 
-        SMemberDTO member = dao.memberLoginCheck(userid, pwd);
+        SMemberDAO dao = SMemberDAOImpl.getInstance();
+        SMemberDTO member = dao.memberLoginCheck(userid, encPwd);
         int flag = member.getAdmin();
         if (flag == 0 || flag == 1) {
             HttpSession session = req.getSession();

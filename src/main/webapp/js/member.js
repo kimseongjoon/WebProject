@@ -22,7 +22,7 @@ $(function () {
             return false;
         }
         if ($("#pwd").val() != $("#pwd_check").val()) {
-            alter("비밀번호가 일치하지 않습니다.");
+            alert("비밀번호가 일치하지 않습니다.");
             $("#pwd_check").focus();
 
             return false;
@@ -48,6 +48,7 @@ $(function () {
     $("#idCheckBtn").click(function () {
         window.open("idcheck", "", "width=500 height=300");
     })
+
     function del(userid, adminStr) {
         if (adminStr == "관리자") {
             alert("관리자는 삭제할 수 없습니다.");
@@ -77,4 +78,5 @@ $(function () {
             }
         })
     })
+
 })

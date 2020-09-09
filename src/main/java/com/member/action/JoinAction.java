@@ -3,6 +3,7 @@ package com.member.action;
 import com.member.model.SMemberDAO;
 import com.member.model.SMemberDAOImpl;
 import com.member.model.SMemberDTO;
+import com.member.util.SHA256;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,10 +33,15 @@ public class JoinAction extends HttpServlet {
         if (isAdmin != null) {
             admin = Integer.parseInt(isAdmin);
         }
+        
+        String userid = req.getParameter("userid");
+        String encPwd = SHA256.getEncrypt(req.getParameter("pwd"), userid);
+
         SMemberDTO md = SMemberDTO.builder()
                 .name(req.getParameter("name"))
-                .userid(req.getParameter("userid"))
-                .pwd(req.getParameter("pwd"))
+                .userid(userid)
+                .pwd(encPwd)
+//                .pwd(req.getParameter("pwd"))
                 .email(req.getParameter("email"))
                 .phone(req.getParameter("phone"))
                 .admin(admin)
