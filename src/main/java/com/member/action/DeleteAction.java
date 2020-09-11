@@ -33,11 +33,8 @@ public class DeleteAction extends HttpServlet {
         req.setCharacterEncoding("utf-8");
 
         HttpSession session = req.getSession();
-        String userid = req.getParameter("userid");
-        if (userid == null) {
-            SMemberDTO sessionUser = (SMemberDTO) session.getAttribute("user");
-            userid = sessionUser.getUserid();
-        }
+        SMemberDTO sessionUser = (SMemberDTO) session.getAttribute("user");
+        String userid = sessionUser.getUserid();
 
         SMemberDAO dao = SMemberDAOImpl.getInstance();
         dao.memberDelete(userid);

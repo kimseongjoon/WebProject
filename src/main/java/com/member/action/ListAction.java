@@ -26,8 +26,7 @@ public class ListAction extends HttpServlet {
 
         req.setAttribute("adminid", sessionUser.getUserid());
         req.setAttribute("members", arr);
-        int count = dao.memberCount();
-        req.setAttribute("count", count);
+        req.setAttribute("count", arr.size());
 
         RequestDispatcher rd = req.getRequestDispatcher("list.jsp");
         rd.forward(req, resp);

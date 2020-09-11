@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/include/header.jsp" %>
 
 <div align="right">
@@ -32,7 +31,7 @@
                         <c:set var="adminStr" value="일반회원"/>
                         ${adminStr}
                         </td>
-                        <td><a href="delete?${member.userid}">삭제</a></td>
+                        <td><a href="javascript:del('${member.userid}')">삭제</a></td>
                     </c:when>
                     <c:otherwise>
                         <c:set var="adminStr" value="관리자"/>

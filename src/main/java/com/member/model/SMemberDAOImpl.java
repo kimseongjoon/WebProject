@@ -69,7 +69,7 @@ public class SMemberDAOImpl implements SMemberDAO {
             while (rs.next()) {
                 SMemberDTO md = SMemberDTO.builder()
                         .userid(rs.getString("USERID"))
-                        .pwd(rs.getString("PWD"))
+//                        .pwd(rs.getString("PWD"))
                         .admin(rs.getInt("ADMIN"))
                         .email(rs.getString("EMAIL"))
                         .name(rs.getString("NAME"))

@@ -34,6 +34,9 @@
                     <a class="nav-link" href="/project/member/logout">로그아웃</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/project/product/addProduct.jsp">상품등록</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">회원변경</a>
                 </li>
                 <li class="nav-item">
@@ -42,7 +45,7 @@
             </c:otherwise>
         </c:choose>
         <li class="nav-item">
-            <a class="nav-link" href="#">게시판</a>
+            <a class="nav-link" href="/project/board/list">게시판</a>
         </li>
     </ul>
 </nav>
