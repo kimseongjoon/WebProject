@@ -20,10 +20,10 @@ public class BoardCommentListAction extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        String bnum = req.getParameter("bnum");
+        Long pnum = Long.valueOf(req.getParameter("pnum"));
 
         SBoardDAO dao = SBoardDAOImpl.getInstance();
-        ArrayList<CommentDTO> commentDTOS = ((SBoardDAOImpl)dao).commentList(bnum);
+        ArrayList<CommentDTO> commentDTOS = ((SBoardDAOImpl)dao).commentList(pnum);
 
         JSONArray jarr = new JSONArray();
 
@@ -32,6 +32,7 @@ public class BoardCommentListAction extends HttpServlet {
 
             obj.put("msg", dto.getMsg());
             obj.put("userid", dto.getUserId());
+            obj.put("email", dto.getEmail());
             obj.put("regdate", dto.getRegdate());
 
             jarr.add(obj);
@@ -39,6 +40,7 @@ public class BoardCommentListAction extends HttpServlet {
 
         JSONObject mainObj = new JSONObject();
         mainObj.put("jarr", jarr);
+        mainObj.put("count", jarr.size());
 
         resp.setContentType("text/html;charset=utf-8");
         PrintWriter out = resp.getWriter();

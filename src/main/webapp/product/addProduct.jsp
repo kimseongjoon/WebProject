@@ -8,23 +8,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/include/header.jsp"%>
 
-<h3>글쓰기</h3>
+<h3>상품 등록</h3>
 <form action="addProduct" method="post" enctype="multipart/form-data">
-    <%--    <input type="hidden" name="num" value=<%=num%>>
-        <input type="hidden" name="ref" value=<%=ref%>>
-        <input type="hidden" name="re_step" value=<%=re_step%>>
-        <input type="hidden" name="re_level" value=<%=re_level%>>--%>
-<%--    <input type="hidden" name="writer" id="writer" value="${sessionScope.user.userid}">--%>
-
     <table border="1" cellspacing="0">
         <tr>
-            <td align="right" colspan="2"><a href="list.jsp">글목록</a></td>
-        </tr>
-        <tr>
             <td>상품 코드</td>
-            <td>
-                <input type="text" name="code" id="code">
-            </td>
+            <td><input type="text" name="code" id="code"></td>
         </tr>
         <tr>
             <td>상품명</td>
@@ -54,8 +43,11 @@
             <td>상태</td>
             <td>
                 <input type="radio" name="condition" id="condition1" value="0">
+                <label for="condition1">신규 제품</label>&nbsp;
                 <input type="radio" name="condition" id="condition2" value="1">
+                <label for="condition2">중고 제품</label>&nbsp;
                 <input type="radio" name="condition" id="condition3" value="2">
+                <label for="condition3">재생 제품</label>
             </td>
         </tr>
         <tr>

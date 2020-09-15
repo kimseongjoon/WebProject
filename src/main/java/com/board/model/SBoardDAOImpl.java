@@ -316,7 +316,7 @@ public class SBoardDAOImpl implements SBoardDAO{
         return null;
     }
 
-    public ArrayList<CommentDTO> commentList(String num) {
+    public ArrayList<CommentDTO> commentList(Long pnum) {
         Connection con = null;
         Statement st = null;
         ResultSet rs = null;
@@ -325,7 +325,7 @@ public class SBoardDAOImpl implements SBoardDAO{
 
         try {
             con = getConnection();
-            sql = "SELECT * FROM COMMENTBOARD WHERE BNUM=" + num;
+            sql = "SELECT * FROM PRODUCTCOMMENTBOARD WHERE PNUM=" + pnum;
 
             System.out.println("commentList -> " + sql);
 
@@ -337,9 +337,10 @@ public class SBoardDAOImpl implements SBoardDAO{
 
                 cd.setCNum(rs.getInt("CNUM"));
                 cd.setUserId(rs.getString("USERID"));
+                cd.setEmail(rs.getString("EMAIL"));
                 cd.setMsg(rs.getString("MSG"));
                 cd.setRegdate(rs.getString("REGDATE"));
-                cd.setBNum(num);
+                cd.setPNum(pnum);
 
                 arr.add(cd);
             }
@@ -359,11 +360,12 @@ public class SBoardDAOImpl implements SBoardDAO{
         try {
             con = getConnection();
 
-            String sql = "INSERT INTO COMMENTBOARD VALUES(COMMENTBOARD_SEQ.NEXTVAL, ?, ?, sysdate, ?)";
+            String sql = "INSERT INTO PRODUCTCOMMENTBOARD VALUES(COMMENTBOARD_SEQ.NEXTVAL, ?, ?, sysdate, ?, ?)";
             ps = con.prepareStatement(sql); // 쿼리 실행하는 객체(문자열을 처리할때 statment객체 보다 조금더 편리)
             ps.setString(1, commentDTO.getUserId());
             ps.setString(2, commentDTO.getMsg());
-            ps.setString(3, commentDTO.getBNum());
+            ps.setLong(3, commentDTO.getPNum());
+            ps.setString(4, commentDTO.getEmail());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

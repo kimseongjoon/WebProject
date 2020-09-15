@@ -8,8 +8,9 @@ import lombok.Data;
 public class CommentDTO {
     private long cNum;
     private String userId;
+    private String email;
     private String msg;
-    private String bNum;
+    private long pNum;
     private String regdate;
 }
 

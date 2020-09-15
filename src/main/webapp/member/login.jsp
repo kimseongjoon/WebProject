@@ -1,39 +1,58 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/include/header.jsp"%>
-<script src="/project/js/login.js"></script>
-<body>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-            <div class="card card-signin my-5">
-                <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
-                    <form class="form-signin">
-                        <div class="form-label-group">
-                            <input type="text" id="userid" class="form-control" placeholder="ID" required autofocus>
-                            <label for="userid">ID</label>
-                        </div>
 
-                        <div class="form-label-group">
-                            <input type="password" id="pwd" class="form-control" placeholder="Password" required>
-                            <label for="pwd">Password</label>
-                        </div>
-
-                        <div class="custom-control custom-checkbox mb-3">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">Remember password</label>
-                        </div>
-                        <button class="btn btn-lg btn-primary btn-block text-uppercase" type="button" id="loginBtn">Login</button>
-<%--                        <hr class="my-4">--%>
-<%--                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign in with Google</button>--%>
-<%--                        <button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook</button>--%>
-                    </form>
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="#"><i class="fa fa-home"></i> Home</a>
+                    <span>Login</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</body>
-</html>
+<!-- Breadcrumb Form Section Begin -->
+
+<!-- Register Section Begin -->
+<div class="register-login-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="login-form">
+                    <h2>Login</h2>
+                    <form action="#">
+                        <div class="group-input">
+                            <label for="userid">User ID</label>
+                            <input type="text" id="userid">
+                        </div>
+                        <div class="group-input">
+                            <label for="pwd">Password</label>
+                            <input type="text" id="pwd">
+                        </div>
+                        <div class="group-input gi-check">
+                            <div class="gi-more">
+                                <label for="save-pass">
+                                    Save Password
+                                    <input type="checkbox" id="save-pass">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <a href="#" class="forget-pass">Forget your Password</a>
+                            </div>
+                        </div>
+                        <button type="button" class="site-btn login-btn" id="loginBtn">Sign In</button>
+                    </form>
+                    <div class="switch-login">
+                        <a href="/project/member/join" class="or-login">Or Create An Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/project/js/login.js"></script>
+<!-- Register Form Section End -->
 
 <%@ include file="/include/footer.jsp"%>

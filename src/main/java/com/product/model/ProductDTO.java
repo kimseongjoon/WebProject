@@ -4,7 +4,7 @@ import lombok.Builder;
 
 @Builder
 public class ProductDTO {
-
+    private String code;
     private long id;
     private String name;
     private long price;
@@ -85,5 +85,13 @@ public class ProductDTO {
 
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public String getCode() {
+        return (code == null) ? "" : code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
     }
 }

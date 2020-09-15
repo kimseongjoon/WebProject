@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/product/addProduct")
 public class AddProductAction extends HttpServlet {
@@ -54,9 +53,13 @@ public class AddProductAction extends HttpServlet {
         }*/
 
 
+         String fileName = multi.getFilesystemName("filename");
+        System.out.println(fileName);
+
         System.out.println("name:" + multi.getParameter("name"));
         ProductDAO dao = ProductDAO.getInstance();
         ProductDTO pd = ProductDTO.builder()
+                .code(multi.getParameter("code"))
                 .name(multi.getParameter("name"))
                 .price(Long.parseLong(multi.getParameter("price")))
                 .detail(multi.getParameter("detail"))
@@ -64,10 +67,11 @@ public class AddProductAction extends HttpServlet {
                 .manufacturer(multi.getParameter("manufacturer"))
                 .stock(Long.parseLong(multi.getParameter("stock")))
                 .condition(multi.getParameter("condition"))
-                .filename(multi.getParameter("filename"))
+                .filename(fileName)
                 .build();
         dao.productInsert(pd);
 
-        resp.sendRedirect("/project/product/productList.jsp");
+//        resp.sendRedirect("/project/product/productList.jsp");
+        resp.sendRedirect("productList");
     }
 }

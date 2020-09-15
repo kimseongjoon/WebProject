@@ -23,14 +23,14 @@ public class BoardCommentWriteAction extends HttpServlet {
 
         SMemberDTO sessionUser = (SMemberDTO) session.getAttribute("user");
 
-
         if (sessionUser != null) {
             String userid = sessionUser.getUserid();
             req.setCharacterEncoding("utf-8");
 
             CommentDTO cd = CommentDTO.builder()
                     .userId(userid)
-                    .bNum(req.getParameter("bnum"))
+                    .pNum(Long.parseLong(req.getParameter("pid")))
+                    .email(req.getParameter("email"))
                     .msg(req.getParameter("comment"))
                     .build();
 
